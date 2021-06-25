@@ -19,7 +19,7 @@ public class Cacao extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("IpView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/IpView.fxml"));
         
         Scene scene = new Scene(root);
         
