@@ -15,19 +15,11 @@ public class Jugador {
     
     private String nombre;
     private String fechaNacimineto;
-
-    public String getFechaNacimineto() {
-        return fechaNacimineto;
-    }
-
-    public void setFechaNacimineto(String fechaNacimineto) {
-        this.fechaNacimineto = fechaNacimineto;
-    }
     private String color;
     private int cacaos;
     private int monedas;
     private int puntos;
-    //private List<Ficha> FichasJugador;
+    private List<Ficha> FichasJugador;
     private int posicionJugador;
 
     public Jugador(String nombre, String fechaNacimineto, String color, int cacaos, int monedas, int puntos, int posicionJugador) {
@@ -40,7 +32,13 @@ public class Jugador {
         this.posicionJugador = posicionJugador;
     }
 
-  
+     public String getFechaNacimineto() {
+        return fechaNacimineto;
+    }
+
+    public void setFechaNacimineto(String fechaNacimineto) {
+        this.fechaNacimineto = fechaNacimineto;
+    }
 
     public String getNombre() {
         return nombre;
