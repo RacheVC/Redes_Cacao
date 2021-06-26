@@ -4,17 +4,20 @@
  * and open the template in the editor.
  */
 package cacao.util;
+
 import java.util.HashMap;
+
 /**
  *
  * @author Rache Vargas
  */
 public class AppContext {
+
     private static AppContext INSTANCE = null;
     private static HashMap<String, Object> context = new HashMap<>();
-     
+
     private AppContext() {
-        
+
     }
 
     private static void createInstance() {
@@ -33,15 +36,14 @@ public class AppContext {
         }
         return INSTANCE;
     }
-   
 
     @Override
     public Object clone() throws CloneNotSupportedException {
         throw new CloneNotSupportedException();
     }
 
-    public Object get(String parameter){             
-        return  context.get(parameter);
+    public Object get(String parameter) {
+        return context.get(parameter);
     }
 
     public void set(String nombre, Object valor) {
@@ -51,10 +53,9 @@ public class AppContext {
     public void delete(String parameter) {
         context.put(parameter, null);
     }
-    
-    public void clear(){
+
+    public void clear() {
         context.clear();
     }
-
 
 }

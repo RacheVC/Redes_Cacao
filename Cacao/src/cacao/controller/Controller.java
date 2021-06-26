@@ -1,7 +1,3 @@
-
-
-
-
 package cacao.controller;
 
 import javafx.stage.Stage;
@@ -9,11 +5,11 @@ import javafx.stage.Stage;
 public abstract class Controller {
 
     public Stage theStage;
-    
-    public Controller(){
-        
+
+    public Controller() {
+
     }
-    
+
     public abstract void initialize();
 
     public Stage getTheStage() {
@@ -23,5 +19,5 @@ public abstract class Controller {
     public void setTheStage(Stage theStage) {
         this.theStage = theStage;
     }
-    
+
 }

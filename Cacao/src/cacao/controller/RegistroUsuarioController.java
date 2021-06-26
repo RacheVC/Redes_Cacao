@@ -5,15 +5,17 @@
  */
 package cacao.controller;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -23,11 +25,11 @@ import javafx.scene.control.TextField;
 public class RegistroUsuarioController extends Controller implements Initializable {
 
     @FXML
-    private TextField TxtNombreUsuario;
+    private JFXTextField TxtNombreUsuario;
     @FXML
-    private DatePicker DpFechaNacimiento;
+    private JFXDatePicker DpFechaNacimiento;
     @FXML
-    private Button BtnGuardar;
+    private JFXButton BtnGuardar;
     @FXML
     private ComboBox<String> CbxColores;
 
@@ -37,11 +39,38 @@ public class RegistroUsuarioController extends Controller implements Initializab
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+        //Se le asigna elementos al ComboBox.
+        ObservableList listaColores = FXCollections.observableArrayList();
+        listaColores.add("Rojo");
+        listaColores.add("Blanco");
+        listaColores.add("Morado");
+        listaColores.add("Amarillo");
+        listaColores.add("Rosado");
+        listaColores.add("Verde claro");
+        listaColores.add("Negro");
+        listaColores.add("Café");
+        listaColores.add("Celeste");
+        listaColores.add("Azul");
+        listaColores.add("Anaranjado");
+        listaColores.add("Verde oliva");
+        listaColores.add("Turquesa intenso");
+        listaColores.add("Borgoña");
+        listaColores.add("Salmón");
+        listaColores.add("Beige");
+        listaColores.add("Lila");
+        listaColores.add("Mostaza");
+        listaColores.add("Verde lima");
+        listaColores.add("Fucsia");
+        CbxColores.setItems(listaColores);
+    }
 
     @Override
     public void initialize() {
-       
+
+    }
+
+    @FXML
+    private void OnClickCbxColores(ActionEvent event) {
     }
 
     @FXML
@@ -52,8 +81,4 @@ public class RegistroUsuarioController extends Controller implements Initializab
     private void OnClickBtnGuardar(ActionEvent event) {
     }
 
-    @FXML
-    private void OnClickCbxColores(ActionEvent event) {
-    }
-    
 }

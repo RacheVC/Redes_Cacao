@@ -13,9 +13,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
-
 public class SceneManager {
-    
+
     public static final int SLIDE_TRANSITION = 0;
     public static final int APPEAR_TRANSITION = 1;
 
@@ -25,15 +24,12 @@ public class SceneManager {
     private int transitionEffect;
     private SceneAnimation.SlideDirection slideDirection;
     private static SceneManager _instance = null;
- 
-    
 
     public SceneManager() {
-       this.transitionEffect = SLIDE_TRANSITION;
-       this.slideDirection = SceneAnimation.SlideDirection.LEFT_TO_RIGHT;
+        this.transitionEffect = SLIDE_TRANSITION;
+        this.slideDirection = SceneAnimation.SlideDirection.LEFT_TO_RIGHT;
     }
 
-    
     public static SceneManager Instance() {
         if (_instance == null) {
             synchronized (SceneManager.class) {
@@ -48,7 +44,7 @@ public class SceneManager {
     public Stage getTheStage() {
         return theStage;
     }
-    
+
     public int getTransitionEffect() {
         return transitionEffect;
     }
@@ -64,16 +60,15 @@ public class SceneManager {
     public void setSlideDirection(SceneAnimation.SlideDirection slideDirection) {
         this.slideDirection = slideDirection;
     }
-    
-   
+
     private FXMLLoader getLoader(String sceneName) {
         try {
             FXMLLoader loader = loaders.get(sceneName);
-            if(loader == null){
-            loader = new FXMLLoader(cacao.Cacao.class.getResource("view/" + sceneName + ".fxml"));
-            loader.load();
-            ((Controller) loader.getController()).setTheStage(this.theStage);
-            SceneManager.Instance().loaders.put(sceneName, loader);
+            if (loader == null) {
+                loader = new FXMLLoader(cacao.Cacao.class.getResource("view/" + sceneName + ".fxml"));
+                loader.load();
+                ((Controller) loader.getController()).setTheStage(this.theStage);
+                SceneManager.Instance().loaders.put(sceneName, loader);
             }
             return loader;
         } catch (IOException ex) {
@@ -82,8 +77,9 @@ public class SceneManager {
         }
     }
 
-        /**
+    /**
      * Load the main container for the scenes
+     *
      * @param theStage the primary stage
      * @param tittle
      */
@@ -101,27 +97,29 @@ public class SceneManager {
 
     /**
      * Este método cambia la actual a la indicada
+     *
      * @param sceneName nombre de la escena
      */
     public void changeSceneTo(String sceneName) {
-         SceneManager.Instance().getTheStage().getScene().setOnKeyPressed(null);
+        SceneManager.Instance().getTheStage().getScene().setOnKeyPressed(null);
         FXMLLoader loader = getLoader(sceneName);
         Controller controller = (Controller) loader.getController();
         controller.initialize();
         this.contenedorController.setActualScene(sceneName);
         this.contenedorController.verificarElementosDeTopBar();
-        if(transitionEffect == SLIDE_TRANSITION){
+        if (transitionEffect == SLIDE_TRANSITION) {
             SceneAnimation.slidePane(this.contenedorController.getStackPaneContent(), loader.getRoot(), this.slideDirection, 0.0, 0.6);
-        }else{
+        } else {
             this.contenedorController.getStackPaneContent().getChildren().clear();
             this.contenedorController.getStackPaneContent().getChildren().add(loader.getRoot());
             SceneAnimation.fadeIn(this.contenedorController.getStackPaneContent(), 0.6);
         }
     }
-    
-     /**
+
+    /**
      * Este método permite crear una ventana modal
-     * @param  sceneName  nombre de la escena
+     *
+     * @param sceneName nombre de la escena
      */
     public void madeModal(String sceneName) {
         FXMLLoader loader = getLoader(sceneName);
@@ -139,24 +137,22 @@ public class SceneManager {
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(this.theStage);
         stage.centerOnScreen();
-        SceneAnimation.fadeIn(stage.getScene().getRoot(),0.5);
-        stage.showAndWait();   
+        SceneAnimation.fadeIn(stage.getScene().getRoot(), 0.5);
+        stage.showAndWait();
     }
-    
+
     /**
      * Resetea todos los loders cargados
      */
-    public void reset(){
+    public void reset() {
         this.loaders.clear();
     }
-    
 
     /**
      * Esta método cierra la ventana princiapl de la aplicación
      */
-    public void finalizeMainView(){
+    public void finalizeMainView() {
         this.theStage.close();
     }
-     
 
 }

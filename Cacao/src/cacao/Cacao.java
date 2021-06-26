@@ -16,13 +16,13 @@ import javafx.stage.Stage;
  * @author rache
  */
 public class Cacao extends Application {
-    
+
     @Override
     public void start(Stage stage) throws Exception {
         SceneManager.Instance().loadContainerView(stage, "Cacao");
         SceneManager.Instance().setSlideDirection(SceneAnimation.SlideDirection.RIGHT_TO_LEFT);
         SceneManager.Instance().changeSceneTo("IpView");
-       /* Parent root = FXMLLoader.load(getClass().getResource("view/IpView.fxml"));
+        /* Parent root = FXMLLoader.load(getClass().getResource("view/IpView.fxml"));
         
         Scene scene = new Scene(root);
         
@@ -35,7 +35,7 @@ public class Cacao extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-    
+
     }
-    
+
 }

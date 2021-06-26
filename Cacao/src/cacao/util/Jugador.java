@@ -5,6 +5,7 @@
  */
 package cacao.util;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,32 +13,25 @@ import java.util.List;
  * @author rache
  */
 public class Jugador {
-    
+
     private String nombre;
-    private String fechaNacimineto;
     private String color;
+    private Date fechaNacimineto;
     private int cacaos;
     private int monedas;
     private int puntos;
-    private List<Ficha> FichasJugador;
     private int posicionJugador;
+    private List<Ficha> FichasJugador;
 
-    public Jugador(String nombre, String fechaNacimineto, String color, int cacaos, int monedas, int puntos, int posicionJugador) {
+    public Jugador(String nombre, String color, Date fechaNacimineto, int cacaos, int monedas, int puntos, int posicionJugador, List<Ficha> FichasJugador) {
         this.nombre = nombre;
-        this.fechaNacimineto = fechaNacimineto;
         this.color = color;
+        this.fechaNacimineto = fechaNacimineto;
         this.cacaos = cacaos;
         this.monedas = monedas;
         this.puntos = puntos;
         this.posicionJugador = posicionJugador;
-    }
-
-     public String getFechaNacimineto() {
-        return fechaNacimineto;
-    }
-
-    public void setFechaNacimineto(String fechaNacimineto) {
-        this.fechaNacimineto = fechaNacimineto;
+        this.FichasJugador = FichasJugador;
     }
 
     public String getNombre() {
@@ -54,6 +48,14 @@ public class Jugador {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public Date getFechaNacimineto() {
+        return fechaNacimineto;
+    }
+
+    public void setFechaNacimineto(Date fechaNacimineto) {
+        this.fechaNacimineto = fechaNacimineto;
     }
 
     public int getCacaos() {
@@ -87,7 +89,13 @@ public class Jugador {
     public void setPosicionJugador(int posicionJugador) {
         this.posicionJugador = posicionJugador;
     }
-    
-    
+
+    public List<Ficha> getLosetasRecolectores() {
+        return FichasJugador;
+    }
+
+    public void setLosetasRecolectores(List<Ficha> FichasJugador) {
+        this.FichasJugador = FichasJugador;
+    }
 
 }
