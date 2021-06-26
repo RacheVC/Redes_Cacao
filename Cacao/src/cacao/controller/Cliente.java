@@ -9,7 +9,7 @@ import java.net.*;
 import java.util.Scanner;
 /**
  *
- * @author USUARIO
+ * @author Diana
  */
 public class Cliente {
     private Socket sCliente;
