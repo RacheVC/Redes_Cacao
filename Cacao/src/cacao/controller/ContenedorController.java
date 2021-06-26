@@ -32,17 +32,15 @@ public class ContenedorController extends Controller implements Initializable {
     private StackPane mainContainer;
     @FXML
     private BorderPane root;
-    
-    private String actualScene;
 
-    
+    private String actualScene;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       this.btnHome.setVisible(false);
+        this.btnHome.setVisible(false);
     }
 
     public ToolBar getTopBar() {
@@ -52,10 +50,10 @@ public class ContenedorController extends Controller implements Initializable {
     public void setTopBar(ToolBar toolBar) {
         this.toolBar = toolBar;
     }
-    
+
     @Override
     public void initialize() {
-       
+
     }
 
     public BorderPane getRootNode() {
@@ -82,10 +80,10 @@ public class ContenedorController extends Controller implements Initializable {
         this.actualScene = actualScene;
     }
 
-    public void verificarElementosDeTopBar(){
-        if(actualScene.equals("InicioView")){
+    public void verificarElementosDeTopBar() {
+        if (actualScene.equals("InicioView")) {
             btnHome.setVisible(false);
-        }else{
+        } else {
             btnHome.setVisible(true);
             SceneAnimation.fadeIn(btnHome, 1.2).play();
         }
@@ -122,7 +120,6 @@ public class ContenedorController extends Controller implements Initializable {
 //            Logger.getLogger(InicioController.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //    }   
-
     @FXML
     private void actionBtnHome(ActionEvent event) {
         if (!actualScene.equals("InicioView")) {
@@ -130,5 +127,5 @@ public class ContenedorController extends Controller implements Initializable {
             SceneManager.Instance().changeSceneTo("InicioView");
         }
     }
-    
+
 }

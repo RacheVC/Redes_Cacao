@@ -24,7 +24,5 @@ public class Tablero {
     public void setTablero(Tablero[][] tablero) {
         this.tablero = tablero;
     }
-    
-    
-    
+
 }

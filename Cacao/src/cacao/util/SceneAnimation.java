@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package cacao.util;
 
 import javafx.animation.FadeTransition;
@@ -21,62 +20,60 @@ import javafx.util.Duration;
  * @author dpérez
  */
 public class SceneAnimation {
-    
+
     public enum SlideDirection {
-    
-    LEFT_TO_RIGHT(0),
-    RIGHT_TO_LEFT(1),
-    TOP_TO_BOTTOM(2),
-    BOTTOM_TO_TOP(3);
-    
-    private final int value;
-    
-    private SlideDirection(int value){
-        this.value = value;
+
+        LEFT_TO_RIGHT(0),
+        RIGHT_TO_LEFT(1),
+        TOP_TO_BOTTOM(2),
+        BOTTOM_TO_TOP(3);
+
+        private final int value;
+
+        private SlideDirection(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
     }
 
-    public int getValue(){
-        return value;
-    }
-
-    }   
-    
-    public static FadeTransition fadeIn(Node node, Double seconds){
+    public static FadeTransition fadeIn(Node node, Double seconds) {
         FadeTransition ft = new FadeTransition(Duration.seconds(seconds));
         ft.setNode(node);
         ft.setFromValue(0.0);
         ft.setToValue(1.0);
         return ft;
     }
-    
-    public static FadeTransition fadeOut(Node node, Double seconds){
+
+    public static FadeTransition fadeOut(Node node, Double seconds) {
         FadeTransition ft = new FadeTransition(Duration.seconds(seconds));
         ft.setNode(node);
         ft.setFromValue(1.0);
         ft.setToValue(0.0);
-        return ft; 
+        return ft;
     }
-    
 
-    
-    public static void slidePane(Pane parentPane, Node slideNode, SlideDirection direction, double endPoint, double seconds){
+    public static void slidePane(Pane parentPane, Node slideNode, SlideDirection direction, double endPoint, double seconds) {
         DoubleProperty traslateProperty;
-        if(direction == SlideDirection.LEFT_TO_RIGHT || direction == SlideDirection.RIGHT_TO_LEFT){
+        if (direction == SlideDirection.LEFT_TO_RIGHT || direction == SlideDirection.RIGHT_TO_LEFT) {
             traslateProperty = slideNode.translateXProperty();
-            if(direction == SlideDirection.LEFT_TO_RIGHT){
-                slideNode.translateXProperty().setValue(- parentPane.getWidth());
-            }else{
+            if (direction == SlideDirection.LEFT_TO_RIGHT) {
+                slideNode.translateXProperty().setValue(-parentPane.getWidth());
+            } else {
                 slideNode.translateXProperty().setValue(parentPane.getWidth());
             }
-        }else{
+        } else {
             traslateProperty = slideNode.translateYProperty();
-            if(direction == SlideDirection.TOP_TO_BOTTOM){
+            if (direction == SlideDirection.TOP_TO_BOTTOM) {
                 slideNode.translateYProperty().setValue(-parentPane.getHeight());
-            }else{
-                
+            } else {
+
                 slideNode.translateYProperty().setValue(parentPane.getHeight());
             }
-           
+
         }
         parentPane.getChildren().add(slideNode);
         Timeline tl = new Timeline();
@@ -84,18 +81,18 @@ public class SceneAnimation {
         KeyFrame kf = new KeyFrame(Duration.seconds(seconds), kv);
         tl.getKeyFrames().add(kf);
         tl.setOnFinished((event) -> {
-            if(parentPane.getChildren().size()>1){
-               parentPane.getChildren().remove(0);
+            if (parentPane.getChildren().size() > 1) {
+                parentPane.getChildren().remove(0);
             }
         });
         tl.play();
     }
-    
-    public static Timeline slide(Node slideNode, double startPoint, double endPoint, double seconds, boolean horizontal){
+
+    public static Timeline slide(Node slideNode, double startPoint, double endPoint, double seconds, boolean horizontal) {
         DoubleProperty traslateProperty;
-        if(horizontal){
+        if (horizontal) {
             traslateProperty = slideNode.translateXProperty();
-        }else{
+        } else {
             traslateProperty = slideNode.translateYProperty();
         }
         traslateProperty.setValue(startPoint);

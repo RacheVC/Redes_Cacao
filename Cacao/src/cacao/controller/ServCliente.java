@@ -26,7 +26,7 @@ public class ServCliente {
     public Socket socketConnection;
 
     public void Conectar(String ip) {
-        try {       
+        try {
             this.socketConnection = new Socket(ip, 9990);
             clientOutputStream = new ObjectOutputStream(socketConnection.getOutputStream());
             clientInputStream = new ObjectInputStream(socketConnection.getInputStream());
