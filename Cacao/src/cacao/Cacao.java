@@ -5,7 +5,6 @@
  */
 package cacao;
 
-import cacao.controller.Cliente;
 import cacao.util.SceneAnimation;
 import cacao.util.SceneManager;
 import javafx.application.Application;
@@ -22,12 +21,7 @@ public class Cacao extends Application {
         SceneManager.Instance().loadContainerView(stage, "Cacao");
         SceneManager.Instance().setSlideDirection(SceneAnimation.SlideDirection.RIGHT_TO_LEFT);
         SceneManager.Instance().changeSceneTo("IpView");
-        /* Parent root = FXMLLoader.load(getClass().getResource("view/IpView.fxml"));
-        
-        Scene scene = new Scene(root);
-        
-        stage.setScene(scene);
-        stage.show();*/
+     
     }
 
     /**

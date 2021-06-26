@@ -30,6 +30,7 @@ public class ServCliente {
             this.socketConnection = new Socket(ip, 9990);
             clientOutputStream = new ObjectOutputStream(socketConnection.getOutputStream());
             clientInputStream = new ObjectInputStream(socketConnection.getInputStream());
+            System.out.println("Cliente Conectado");
         } catch (IOException ex) {
             System.out.println("ADIOSS" + ex);
         }

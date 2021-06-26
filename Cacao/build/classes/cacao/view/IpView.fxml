@@ -20,7 +20,7 @@
                         <Insets left="70.0" top="100.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="txtIpServidor">
+                  <TextField fx:id="txtIpServidor" promptText="25.100.179.146">
                      <VBox.margin>
                         <Insets top="50.0" />
                      </VBox.margin>
@@ -32,7 +32,7 @@
                   </Button>
                   <Button fx:id="BtnConectarServidor" mnemonicParsing="false" onAction="#OnClickBtnConectar" text="CONECTAR SERVIDOR" VBox.vgrow="ALWAYS">
                      <VBox.margin>
-                        <Insets left="35.0" top="70.0" />
+                        <Insets left="45.0" top="70.0" />
                      </VBox.margin>
                   </Button>
                </children>

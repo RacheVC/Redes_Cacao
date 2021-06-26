@@ -5,7 +5,7 @@
  */
 package cacao.controller;
 
-import cacao.util.AppContext;
+import cacao.util.SceneManager;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -49,8 +49,8 @@ public class IpController extends Controller implements Initializable {
     @FXML
     private void OnClickEntrar(ActionEvent event) {
         String IpServidor = this.txtIpServidor.getText();
-        AppContext.getInstance().set("ip", IpServidor);
         this.servidorCliente.Conectar(IpServidor);
+        SceneManager.Instance().changeSceneTo("RegistroUsuarioView");
 
     }
 

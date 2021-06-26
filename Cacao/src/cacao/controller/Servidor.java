@@ -34,7 +34,6 @@ public class Servidor {
                         Thread hiloCliente = new Thread(new Runnable() {
                             ObjectInputStream serverInputStream;
                             ObjectOutputStream serverOutputStream;
-
                             @Override
                             public void run() {
                                 try {
@@ -58,7 +57,6 @@ public class Servidor {
                                     Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
                                 }
                             }
-
                             public void EnviarObjeto(HashMap<String, Object> consulta) {
                                 try {
                                     serverOutputStream.writeObject(consulta);
@@ -79,5 +77,7 @@ public class Servidor {
             }
         });
         HiloConexion.start();
+        System.out.println("Servidor Activo");
+        System.out.println("En espera de los Jugadores");
     }
 }
