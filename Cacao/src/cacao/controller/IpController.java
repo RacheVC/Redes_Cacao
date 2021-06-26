@@ -5,6 +5,7 @@
  */
 package cacao.controller;
 
+import cacao.util.AppContext;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -25,21 +26,37 @@ public class IpController extends Controller implements Initializable {
     @FXML
     private Button BtnEntrar;
 
+    @FXML
+    private Button BtnConectarServidor;
+    ServCliente servidorCliente;
+    Servidor servidor;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+        this.servidorCliente = new ServCliente();
+        this.servidor = new Servidor();
+    }
 
     @Override
     public void initialize() {
-        
+
     }
 
     @FXML
     private void OnClickEntrar(ActionEvent event) {
+        String IpServidor = this.txtIpServidor.getText();
+        AppContext.getInstance().set("ip", IpServidor);
+        this.servidorCliente.Conectar(IpServidor);
+
     }
-    
+
+    @FXML
+    private void OnClickBtnConectar(ActionEvent event) {
+        this.servidor.ConectarServidor();
+    }
+
 }

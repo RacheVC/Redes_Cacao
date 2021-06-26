@@ -19,8 +19,7 @@ import java.util.logging.Logger;
  * @author rache
  */
 public class Servidor {
-   
-    
+     
     public void  ConectarServidor(){
         Thread HiloConexion;
         HiloConexion = new Thread(new Runnable() {

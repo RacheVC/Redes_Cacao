@@ -35,8 +35,7 @@ public class Cacao extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-        Cliente c=new Cliente("192.168.1.10", 9990);
-        c.iniciar();   
+    
     }
     
 }
