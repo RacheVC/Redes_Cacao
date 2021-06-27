@@ -103,7 +103,7 @@ public class RegistroUsuarioController extends Controller implements Initializab
           consulta.put("Accion", "Registro");
           consulta.put("Jugador", jugador);
           this.Servidor.EnviarAccion(consulta);
-          SceneManager.Instance().changeSceneTo("AcercadeView");
+          SceneManager.Instance().changeSceneTo("MesaJuegoView");
         }if(this.DpFechaNacimiento.getValue() == null){
               JOptionPane.showMessageDialog(null, "Falta por completar la Fecha de Nacimiento", "Información Faltante", JOptionPane.WARNING_MESSAGE);
             

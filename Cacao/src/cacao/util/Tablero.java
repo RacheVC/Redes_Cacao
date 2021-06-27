@@ -11,18 +11,19 @@ package cacao.util;
  */
 public class Tablero {
 
-    private Tablero[][] tablero;
+    private int [][] tablero;
 
-    public Tablero(Tablero[][] tablero) {
-        this.tablero = tablero;
+    public Tablero(int[][] tablero) {
+       
     }
 
-    public Tablero[][] getTablero() {
+    public int[][] getTablero() {
         return tablero;
     }
 
-    public void setTablero(Tablero[][] tablero) {
+    public void setTablero(int[][] tablero) {
         this.tablero = tablero;
     }
 
+    
 }
