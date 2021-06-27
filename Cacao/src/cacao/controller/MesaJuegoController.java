@@ -15,18 +15,13 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.RowConstraints;
 
 /**
  * FXML Controller class
@@ -103,7 +98,7 @@ public class MesaJuegoController extends Controller implements Initializable {
                 }// cargamos la imagen al panel creado
 
                 // agregamos el panel a la matriz grafica
-                this.MatrizGrafica.getStyleClass().add("game-grid");
+                
 
                // this.MatrizGrafica.getStyleClass().add("first-row");
                 this.MatrizGrafica.add(newPane, i, j);

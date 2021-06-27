@@ -4,33 +4,40 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cacao.controller.IpController">
    <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/fondoSelva.jpg" />
+         </image>
+      </ImageView>
       <HBox layoutX="220.0" layoutY="142.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox prefHeight="400.0" prefWidth="202.0" HBox.hgrow="ALWAYS" />
             <VBox prefHeight="400.0" prefWidth="203.0" HBox.hgrow="SOMETIMES">
                <children>
-                  <Label text="IP del servidor:">
+                  <Label styleClass="Label" stylesheets="@../style/Style.css" text="IP del servidor:">
                      <VBox.margin>
                         <Insets left="70.0" top="100.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="txtIpServidor" promptText="25.100.179.146">
+                  <TextField fx:id="txtIpServidor" promptText="25.100.179.146" styleClass="item2" stylesheets="@../style/Style.css">
                      <VBox.margin>
                         <Insets top="50.0" />
                      </VBox.margin>
                   </TextField>
-                  <Button fx:id="BtnEntrar" mnemonicParsing="false" onAction="#OnClickEntrar" text="ENTRAR">
+                  <Button fx:id="BtnEntrar" mnemonicParsing="false" onAction="#OnClickEntrar" styleClass="Boton1" stylesheets="@../style/Style.css" text="ENTRAR">
                      <VBox.margin>
                         <Insets left="75.0" top="50.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="BtnConectarServidor" mnemonicParsing="false" onAction="#OnClickBtnConectar" text="CONECTAR SERVIDOR" VBox.vgrow="ALWAYS">
+                  <Button fx:id="BtnConectarServidor" mnemonicParsing="false" onAction="#OnClickBtnConectar" styleClass="Boton1" stylesheets="@../style/Style.css" text="CONECTAR SERVIDOR" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets left="45.0" top="70.0" />
                      </VBox.margin>

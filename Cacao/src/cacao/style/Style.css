@@ -8,20 +8,53 @@ and open the template in the editor.
     Author     : rache
 */
 
-.game-grid {
-    -fx-background-color: white ;
-    -fx-padding: 10 ;
+
+
+.Boton1 {
+   
+    -fx-background-radius:  25px;
+    
+    
+    -fx-effect: dropshadow(one-pass-box, #EC7063  , 22, 0.0 , 0, 0);
+    -fx-effect: innershadow(one-pass-box, #EC7063   , 30, 0.0 , 0, 0);
+    -fx-background-color: #F5B7B1   ;
+    /*-fx-border-color :  #119D84;*/
+    -fx-border-radius: 25px;
+    -fx-border-width: 3;
+    -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.3), 45, 0, 10, 0);
 }
-.game-grid-cell {
-    -fx-background-color: black, white ;
-    -fx-background-insets: 0, 0 1 1 0 ;
+.barraprimera {
+   
+    -fx-background-radius:  10px;
+    
+    
+    -fx-effect: dropshadow(one-pass-box, #AAB7B8   , 22, 0.0 , 0, 0);
+    -fx-effect: innershadow(one-pass-box, #AAB7B8    , 30, 0.0 , 0, 0);
+    -fx-background-color: #AAB7B8    ;
+    /*-fx-border-color :  #119D84;*/
+    -fx-border-radius: 10px;
+    -fx-border-width: 1;
+    -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.3), 45, 0, 10, 0);
 }
-.game-grid-cell.first-row {
-    -fx-background-insets: 0, 1 1 1 0 ;
+
+.Fondo {
+    -fx-background-image: url("\\src\\cacao\\resources\\fondoSelva.png");
+    /*-fx-background-position: 1900;*/
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100% 100%;
 }
-.game-grid-cell.first-column {
-    -fx-background-insets: 0, 0 1 1 1 ;
+/* Item 2 */
+.item2 .wrapper.active input {
+    padding-left: 15px;
 }
-.game-grid-cell.first-row.first-column {
-    -fx-background-insets: 0, 1 ;
+
+.item2 .wrapper.active label {
+    font-weight: bold;
+    top: -18px;
+}
+.Label {
+         -fx-font-family: "Fantasy";
+         -fx-text-fill: #641E16;
+         -fx-font-size: 15px;
+
 }
