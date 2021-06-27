@@ -5,6 +5,7 @@
  */
 package cacao.util;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -14,20 +15,32 @@ import java.util.List;
 public class Partida {
 
     private List<Jugador> jugador;
+    private List<Ficha> FichasTrabajador;
+    private List<Ficha> FichasSelva;
     private String turno;
     private String ganador;
 
     public Partida() {
     }
 
-    public Partida(List<Jugador> jugador, String turno, String ganador) {
+    public Partida(List<Jugador> jugador, List<Ficha> FichasTrabajador, List<Ficha> FichasSelva, String turno, String ganador) {
         this.jugador = jugador;
+        this.FichasTrabajador = FichasTrabajador;
+        this.FichasSelva = FichasSelva;
         this.turno = turno;
         this.ganador = ganador;
     }
 
     public void setJugador(List<Jugador> jugador) {
         this.jugador = jugador;
+    }
+
+    public void setFichaT(List<Ficha> FichasTrabajador) {
+        this.FichasTrabajador = FichasTrabajador;
+    }
+
+    public void setFichaS(List<Ficha> FichasSelva) {
+        this.FichasSelva = FichasSelva;
     }
 
     public void setTurno(String turno) {
@@ -42,12 +55,67 @@ public class Partida {
         return jugador;
     }
 
+    public List<Ficha> getFichaT() {
+        return FichasTrabajador;
+    }
+
+    public List<Ficha> getFichaS() {
+        return FichasSelva;
+    }
+
     public String getTurno() {
         return turno;
     }
 
     public String getGanador() {
         return ganador;
+    }
+
+    public void CreacionFichasTrabajadoresTipo1() {
+        Jugador jugadorFichas = new Jugador();
+        //Creación de las Fichas -> 1-1-1-1 (4)
+        for (int i = 0; i < 4; i++) {
+            String color = (String) AppContext.getInstance().get("Color");
+            Ficha Trabajador = new Ficha("Trabajador", color, 1, 1, 1, 1);
+            this.FichasTrabajador.add(Trabajador);
+        }
+        jugadorFichas.setLosetasRecolectores(FichasTrabajador);
+    }
+
+    public void CreacionFichasTrabajadoresTipo2() {
+        Jugador jugadorFichas = new Jugador();
+        //Creación de las Fichas -> 2-1-0-1 (5)
+        for (int i = 0; i < 5; i++) {
+            String color = (String) AppContext.getInstance().get("Color");
+            Ficha Trabajador = new Ficha("Trabajador", color, 2, 1, 0, 1);
+            this.FichasTrabajador.add(Trabajador);
+        }
+        jugadorFichas.setLosetasRecolectores(FichasTrabajador);
+    }
+
+    public void CreacionFichasTrabajadoresTipo3() {
+        Jugador jugadorFichas = new Jugador();
+        //Creación de la Ficha -> 3-0-0-1 (1)
+        String color = (String) AppContext.getInstance().get("Color");
+        Ficha Trabajador = new Ficha("Trabajador", color, 3, 0, 0, 1);
+        this.FichasTrabajador.add(Trabajador);
+        jugadorFichas.setLosetasRecolectores(FichasTrabajador);
+    }
+
+    public void CreacionFichasTrabajadoresTipo4() {
+        Jugador jugadorFichas = new Jugador();
+        //Creación de la Ficha -> 3-1-0-0 (1)
+        String color = (String) AppContext.getInstance().get("Color");
+        Ficha Trabajador = new Ficha("Trabajador", color, 3, 1, 0, 0);
+        this.FichasTrabajador.add(Trabajador);
+        jugadorFichas.setLosetasRecolectores(FichasTrabajador);
+    }
+
+    public void RemoverFichasTrabajadores(int cantidadJugadores) {
+        Jugador jugadorFichas = new Jugador();
+        if (cantidadJugadores == 3) {
+            jugadorFichas.getLosetasRecolectores().remove(0);
+        }
     }
 
 }

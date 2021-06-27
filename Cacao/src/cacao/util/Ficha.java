@@ -11,21 +11,23 @@ package cacao.util;
  */
 public class Ficha {
 
-    private int posicion;
     private String tipo;
     private String color;
+    private int posicionD;
+    private int posicionAB;
+    private int posicionI;
+    private int posicionAR;
 
     public Ficha() {
     }
 
-    public Ficha(int posicion, String tipo, String color) {
-        this.posicion = posicion;
+    public Ficha(String tipo, String color, int posicionD, int posicionAB, int posicionI, int posicionAR) {
         this.tipo = tipo;
         this.color = color;
-    }
-
-    public void setPosicion(int posicion) {
-        this.posicion = posicion;
+        this.posicionD = posicionD;
+        this.posicionAB = posicionAB;
+        this.posicionI = posicionI;
+        this.posicionAR = posicionAR;
     }
 
     public void setTipo(String tipo) {
@@ -36,8 +38,20 @@ public class Ficha {
         this.color = color;
     }
 
-    public int getPosicion() {
-        return posicion;
+    public void setPosicionD(int posicionD) {
+        this.posicionD = posicionD;
+    }
+
+    public void setPosicionAB(int posicionAB) {
+        this.posicionAB = posicionAB;
+    }
+
+    public void setPosicionI(int posicionI) {
+        this.posicionI = posicionI;
+    }
+
+    public void setPosicionAR(int posicionAR) {
+        this.posicionAR = posicionAR;
     }
 
     public String getTipo() {
@@ -46,5 +60,21 @@ public class Ficha {
 
     public String getColor() {
         return color;
+    }
+
+    public int getPosicionD() {
+        return posicionD;
+    }
+
+    public int getPosicionAB() {
+        return posicionAB;
+    }
+
+    public int getPosicionI() {
+        return posicionI;
+    }
+
+    public int getPosicionAR() {
+        return posicionAR;
     }
 }

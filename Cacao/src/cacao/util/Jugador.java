@@ -7,7 +7,6 @@ package cacao.util;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,15 +24,14 @@ public class Jugador implements Serializable {
     private int posicionJugador;
     private List<Ficha> FichasJugador;
 
+    public Jugador() {
+    }
+
     public Jugador(String nombre, String color, LocalDate fechaNacimineto) {
         this.nombre = nombre;
         this.color = color;
         this.fechaNacimineto = fechaNacimineto;
     }
-
-    
-
- 
 
     public String getNombre() {
         return nombre;
@@ -58,7 +56,6 @@ public class Jugador implements Serializable {
     public void setFechaNacimineto(LocalDate fechaNacimineto) {
         this.fechaNacimineto = fechaNacimineto;
     }
-
 
     public int getCacaos() {
         return cacaos;
