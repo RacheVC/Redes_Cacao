@@ -22,7 +22,7 @@ import javafx.stage.Stage;
  *
  * @author Diana
  */
-public class AcercadeViewController implements Initializable {
+public class AcercadeViewController extends Controller implements Initializable {
 
     @FXML
     private Label lblUni;
@@ -65,6 +65,11 @@ public class AcercadeViewController implements Initializable {
         SceneManager.Instance().loadContainerView(stage, "Cacao");
         SceneManager.Instance().setSlideDirection(SceneAnimation.SlideDirection.RIGHT_TO_LEFT);
         SceneManager.Instance().changeSceneTo("IpView");
+    }
+
+    @Override
+    public void initialize() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

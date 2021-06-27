@@ -109,7 +109,7 @@ public class RegistroUsuarioController extends Controller implements Initializab
             
         }if(this.CbxColores.getValue() == null){
             JOptionPane.showMessageDialog(null, "No Escogio un Color", "Información Faltante", JOptionPane.WARNING_MESSAGE);
-        }else{
+        }if(this.TxtNombreUsuario.equals(" ")){
             JOptionPane.showMessageDialog(null, "Falta por completar el espacio Nombre", "Información Faltante", JOptionPane.WARNING_MESSAGE);
         }
     }

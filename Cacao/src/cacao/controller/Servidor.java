@@ -8,6 +8,7 @@ package cacao.controller;
 import cacao.util.AppContext;
 import cacao.util.Ficha;
 import cacao.util.Jugador;
+import cacao.util.Partida;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -15,6 +16,7 @@ import java.io.Serializable;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
@@ -25,7 +27,8 @@ import java.util.logging.Logger;
  * @author rache
  */
 public class Servidor implements Serializable{
- List<Jugador> ListaJugadores; 
+ List<Jugador> ListaJugadores = new ArrayList<Jugador>();
+ Partida partida;
     public void ConectarServidor() {
         Thread HiloConexion;
         HiloConexion = new Thread(new Runnable() {
@@ -51,9 +54,16 @@ public class Servidor implements Serializable{
                                     while (true) {
                                         consulta = (HashMap<String, Object>) serverInputStream.readObject();
                                         if (consulta.get("Accion").equals("Registro")) {
-                                           // Jugador jugador = (Jugador) consulta.get("Jugador");
-                                            ListaJugadores.add((Jugador) consulta.get("Jugador"));
-                                            System.out.println("Lista Jugadores:" + ListaJugadores);
+                                            try{
+                                                partida = new Partida();
+                                                if(ListaJugadores.size() < 5){
+                                                ListaJugadores.add((Jugador) consulta.get("Jugador"));
+                                                partida.setJugador(ListaJugadores);
+                                                System.out.println("Lista Jugadores:" + ListaJugadores);
+                                                }                                 
+                                            }catch(NullPointerException ex){
+                                                System.out.println(ex);
+                                            }                                      
                                         } else if (consulta.get("Accion").equals("Salir")) {
                                             break;
                                         }
