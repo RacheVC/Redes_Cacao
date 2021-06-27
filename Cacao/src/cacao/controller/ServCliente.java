@@ -5,10 +5,10 @@
  */
 package cacao.controller;
 
-import cacao.util.AppContext;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.net.Socket;
 import java.util.HashMap;
 
@@ -16,7 +16,7 @@ import java.util.HashMap;
  *
  * @author rache
  */
-public class ServCliente {
+public class ServCliente implements Serializable{
 
     public ServCliente() {
     }
@@ -32,7 +32,7 @@ public class ServCliente {
             clientInputStream = new ObjectInputStream(socketConnection.getInputStream());
             System.out.println("Cliente Conectado");
         } catch (IOException ex) {
-            System.out.println("ADIOSS" + ex);
+            System.out.println("conexion" + ex);
         }
 
     }

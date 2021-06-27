@@ -5,6 +5,8 @@
  */
 package cacao.util;
 
+import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -12,27 +14,26 @@ import java.util.List;
  *
  * @author rache
  */
-public class Jugador {
+public class Jugador implements Serializable {
 
     private String nombre;
     private String color;
-    private Date fechaNacimineto;
+    private LocalDate fechaNacimineto;
     private int cacaos;
     private int monedas;
     private int puntos;
     private int posicionJugador;
     private List<Ficha> FichasJugador;
 
-    public Jugador(String nombre, String color, Date fechaNacimineto, int cacaos, int monedas, int puntos, int posicionJugador, List<Ficha> FichasJugador) {
+    public Jugador(String nombre, String color, LocalDate fechaNacimineto) {
         this.nombre = nombre;
         this.color = color;
         this.fechaNacimineto = fechaNacimineto;
-        this.cacaos = cacaos;
-        this.monedas = monedas;
-        this.puntos = puntos;
-        this.posicionJugador = posicionJugador;
-        this.FichasJugador = FichasJugador;
     }
+
+    
+
+ 
 
     public String getNombre() {
         return nombre;
@@ -50,13 +51,14 @@ public class Jugador {
         this.color = color;
     }
 
-    public Date getFechaNacimineto() {
+    public LocalDate getFechaNacimineto() {
         return fechaNacimineto;
     }
 
-    public void setFechaNacimineto(Date fechaNacimineto) {
+    public void setFechaNacimineto(LocalDate fechaNacimineto) {
         this.fechaNacimineto = fechaNacimineto;
     }
+
 
     public int getCacaos() {
         return cacaos;

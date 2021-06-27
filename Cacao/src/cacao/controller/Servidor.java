@@ -5,12 +5,18 @@
  */
 package cacao.controller;
 
+import cacao.util.AppContext;
+import cacao.util.Ficha;
+import cacao.util.Jugador;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,8 +24,8 @@ import java.util.logging.Logger;
  *
  * @author rache
  */
-public class Servidor {
-
+public class Servidor implements Serializable{
+ List<Jugador> ListaJugadores; 
     public void ConectarServidor() {
         Thread HiloConexion;
         HiloConexion = new Thread(new Runnable() {
@@ -34,17 +40,20 @@ public class Servidor {
                         Thread hiloCliente = new Thread(new Runnable() {
                             ObjectInputStream serverInputStream;
                             ObjectOutputStream serverOutputStream;
+
                             @Override
                             public void run() {
                                 try {
                                     HashMap<String, Object> consulta = new HashMap<String, Object>();
-
+                                   
                                     serverInputStream = new ObjectInputStream(cliente.getInputStream());
                                     serverOutputStream = new ObjectOutputStream(cliente.getOutputStream());
                                     while (true) {
                                         consulta = (HashMap<String, Object>) serverInputStream.readObject();
                                         if (consulta.get("Accion").equals("Registro")) {
-                                            System.out.println("REGISTRO");
+                                           // Jugador jugador = (Jugador) consulta.get("Jugador");
+                                            ListaJugadores.add((Jugador) consulta.get("Jugador"));
+                                            System.out.println("Lista Jugadores:" + ListaJugadores);
                                         } else if (consulta.get("Accion").equals("Salir")) {
                                             break;
                                         }
@@ -57,6 +66,7 @@ public class Servidor {
                                     Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
                                 }
                             }
+
                             public void EnviarObjeto(HashMap<String, Object> consulta) {
                                 try {
                                     serverOutputStream.writeObject(consulta);
