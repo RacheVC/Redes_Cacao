@@ -5,24 +5,28 @@
  */
 package cacao.controller;
 
+import cacao.util.AppContext;
 import cacao.util.Tablero;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.RowConstraints;
 
 /**
  * FXML Controller class
@@ -33,25 +37,32 @@ public class MesaJuegoController extends Controller implements Initializable {
 
     @FXML
     private GridPane MatrizGrafica;
+
     private int MatrizLogica[][] = new int[12][12];
-    
+
+    @FXML
+    private Button BtnSalir;
+    ServCliente Servidor;
+
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.cargarMatrizGrafica();
-        
+        this.Servidor = (ServCliente) AppContext.getInstance().get("ServidorCliente");
+
         // TODO
-    }    
+    }
 
     @Override
     public void initialize() {
-     
+
     }
-    
+
     public void cargarImagenPanel(Pane panel, String path) {
         try {
             // inicializamos la imagen con ruta enviada por parametro
@@ -73,30 +84,45 @@ public class MesaJuegoController extends Controller implements Initializable {
             Logger.getLogger(MesaJuegoController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-   public void cargarMatrizGrafica(){
-   Tablero tablero = new Tablero(this.MatrizLogica);
-       for (int i = 0; i < 12; i++) {
+
+    public void cargarMatrizGrafica() {
+        Tablero tablero = new Tablero(this.MatrizLogica);
+        for (int i = 0; i < 12; i++) {
             for (int j = 0; j < 12; j++) {
-               //  this.MatrizGrafica.setBackground(new Background(new BackgroundFill(Color.DARKSEAGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+                //  this.MatrizGrafica.setBackground(new Background(new BackgroundFill(Color.DARKSEAGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
                 // creamos un panel y seteamos el Id de este con los indices de la matriz
                 Pane newPane = new Pane();
-                
+
                 newPane.setId(String.valueOf(i) + String.valueOf(j));
                 newPane.setPrefSize(100, 100);
-                if(i == 6 && j==6)  {
-                   this.cargarImagenPanel(newPane, System.getProperty("user.dir") + "\\src\\cacao\\resources\\ImagenFija1.png"); 
+                if (i == 6 && j == 6) {
+                    this.cargarImagenPanel(newPane, System.getProperty("user.dir") + "\\src\\cacao\\resources\\ImagenFija1.png");
                 }
-                if(i == 5 && j==5){
-                   this.cargarImagenPanel(newPane, System.getProperty("user.dir") + "\\src\\cacao\\resources\\MinaFija.png"); 
+                if (i == 5 && j == 5) {
+                    this.cargarImagenPanel(newPane, System.getProperty("user.dir") + "\\src\\cacao\\resources\\MinaFija.png");
                 }// cargamos la imagen al panel creado
-                
+
                 // agregamos el panel a la matriz grafica
+                this.MatrizGrafica.getStyleClass().add("game-grid");
+
+               // this.MatrizGrafica.getStyleClass().add("first-row");
                 this.MatrizGrafica.add(newPane, i, j);
                 this.MatrizLogica[i][j] = 1;
 
             }
         }
-   }
+    }
     
+    
+   
+
+    @FXML
+    private void OnActionBtnSalir(ActionEvent event) {
+        HashMap<String, Object> consulta = new HashMap<>();
+        consulta.put("Accion", "Salir");
+        this.Servidor.EnviarAccion(consulta);
+        this.Servidor.CerrarConexion();
+
+    }
+
 }

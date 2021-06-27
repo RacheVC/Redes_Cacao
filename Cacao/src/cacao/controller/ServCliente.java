@@ -56,7 +56,7 @@ public class ServCliente implements Serializable{
             this.clientOutputStream.close();
             this.clientInputStream.close();
         } catch (IOException ex) {
-
+            System.out.println("AAAAAAA" + ex);
         }
     }
 

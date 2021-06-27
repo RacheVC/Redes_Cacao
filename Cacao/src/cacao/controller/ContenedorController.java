@@ -5,6 +5,7 @@
  */
 package cacao.controller;
 
+import cacao.util.AppContext;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -34,13 +35,17 @@ public class ContenedorController extends Controller implements Initializable {
     private BorderPane root;
 
     private String actualScene;
-
+    
+    ServCliente Servidor;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.btnHome.setVisible(false);
+        this.Servidor = (ServCliente) AppContext.getInstance().get("ServidorCliente");
+
+        
     }
 
     public ToolBar getTopBar() {
@@ -53,7 +58,7 @@ public class ContenedorController extends Controller implements Initializable {
 
     @Override
     public void initialize() {
-
+        
     }
 
     public BorderPane getRootNode() {
@@ -81,51 +86,22 @@ public class ContenedorController extends Controller implements Initializable {
     }
 
     public void verificarElementosDeTopBar() {
-        if (actualScene.equals("InicioView")) {
+        if (actualScene.equals("IpView")) {
             btnHome.setVisible(false);
         } else {
             btnHome.setVisible(true);
             SceneAnimation.fadeIn(btnHome, 1.2).play();
         }
     }
-
-//    @FXML
-//    private void handleBtnAcerca(ActionEvent event) {
-//        try {
-//            FXMLLoader loader = new FXMLLoader();
-//            loader.setLocation(sokoban.Sokoban.class.getResource("view/Acerca.fxml"));
-//            loader.load();
-//            VBox root = (VBox) loader.getRoot();
-//            // loginStage.getIcons().add(new Image("restuna/resourses/general/icono-app.png"));
-//            Scene scene = new Scene(root);
-//  
-//            Stage acercaStage = new Stage();
-//            acercaStage.setScene(scene);
-//            acercaStage.initOwner(this.theStage);
-//            acercaStage.initModality(Modality.NONE);
-//            acercaStage.initStyle(StageStyle.TRANSPARENT);
-//            acercaStage.setOpacity(0.95);
-//            double centerXPosition = theStage.getX() + theStage.getWidth()/2d;
-//            double centerYPosition = theStage.getY() + theStage.getHeight()/2d;
-//            acercaStage.setX(centerXPosition - root.getPrefWidth()/2);
-//            acercaStage.setY(centerYPosition - root.getPrefHeight()/2);
-//            acercaStage.focusedProperty().addListener((observable, oldValue, newValue) -> {
-//                if(!newValue){
-//                    acercaStage.close();
-//                }
-//            });
-//            Animation.fadeIn(root, 1.5).play();
-//            acercaStage.show();
-//        } catch (IOException ex) {
-//            Logger.getLogger(InicioController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }   
+   
     @FXML
     private void actionBtnHome(ActionEvent event) {
-        if (!actualScene.equals("InicioView")) {
+        if (!actualScene.equals("IpView")) {
             System.out.println("ESCENA CAMBIADA");
-            SceneManager.Instance().changeSceneTo("InicioView");
+            SceneManager.Instance().changeSceneTo("RegistroUsuarioView");
         }
     }
+
+
 
 }
