@@ -159,7 +159,7 @@ public class MesaJuegoController extends Controller implements Initializable {
                 newPane.setId(String.valueOf(i) + String.valueOf(j));
                 newPane.setPrefSize(100, 100);
                 if (i == 6 && j == 6) {
-                    this.cargarImagenPanel(newPane, System.getProperty("user.dir") + "\\src\\cacao\\resources\\Materiales para el juego Cacao\\Losetas de selva\\Minas\\Mina 2-Valor 1.png");
+                    this.cargarImagenPanel(newPane, System.getProperty("user.dir") + "\\src\\cacao\\resources\\Materiales para el juego Cacao\\Losetas de selva\\Mercados\\Mercado 1-Precio 2.png");
                 }
                 if (i == 5 && j == 5) {
                     this.cargarImagenPanel(newPane, System.getProperty("user.dir") + "\\src\\cacao\\resources\\Materiales para el juego Cacao\\Losetas de selva\\Plantanciones\\Plantación simple 1.png");

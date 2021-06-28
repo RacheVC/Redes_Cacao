@@ -13,16 +13,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cacao.controller.RegistroUsuarioController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="Fondo" stylesheets="@../style/Style.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cacao.controller.RegistroUsuarioController">
    <children>
       <HBox layoutX="177.0" layoutY="79.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
             <VBox prefHeight="781.0" prefWidth="555.0" HBox.hgrow="SOMETIMES">
                <children>
-                  <Label text="Ingrese su nombre de Ususario:" VBox.vgrow="ALWAYS">
+                  <Label styleClass="Label" text="Ingrese su nombre de Ususario:" VBox.vgrow="ALWAYS">
                      <VBox.margin>
-                        <Insets left="10.0" top="10.0" />
+                        <Insets left="120.0" top="10.0" />
                      </VBox.margin>
                      <font>
                         <Font name="Cooper Black" size="15.0" />
@@ -32,15 +32,18 @@
                      <children>
                         <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../recursos/Usuario.png" />
+                              <Image url="@../resources/Usuario.png" />
                            </image>
+                           <HBox.margin>
+                              <Insets left="60.0" />
+                           </HBox.margin>
                         </ImageView>
-                        <JFXTextField fx:id="TxtNombreUsuario" focusColor="#0dcdba" labelFloat="true" prefHeight="41.0" prefWidth="245.0" unFocusColor="BLACK">
+                        <JFXTextField fx:id="TxtNombreUsuario" focusColor="WHITE" labelFloat="true" prefHeight="41.0" prefWidth="245.0" styleClass="Label" unFocusColor="WHITE">
                            <font>
                               <Font name="Arial" size="12.0" />
                            </font>
                            <HBox.margin>
-                              <Insets left="5.0" />
+                              <Insets left="10.0" />
                            </HBox.margin>
                         </JFXTextField>
                      </children>
@@ -48,22 +51,22 @@
                         <Insets left="10.0" top="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <Label text="Seleccione su fecha de nacimiento:" VBox.vgrow="ALWAYS">
+                  <Label styleClass="Label" text="Seleccione su fecha de nacimiento:" VBox.vgrow="ALWAYS">
                      <VBox.margin>
-                        <Insets left="10.0" top="50.0" />
+                        <Insets left="110.0" top="50.0" />
                      </VBox.margin>
                      <font>
                         <Font name="Cooper Black" size="15.0" />
                      </font>
                   </Label>
-                  <JFXDatePicker fx:id="DpFechaNacimiento" defaultColor="#0dcdba" onAction="#OnClickDpFechaNacimeinto" prefHeight="30.0" prefWidth="174.0" style="-fx-border-color: #0dcdba;">
+                  <JFXDatePicker fx:id="DpFechaNacimiento" defaultColor="#09ebab" onAction="#OnClickDpFechaNacimeinto" prefHeight="30.0" prefWidth="174.0" style="-fx-border-color: #ffffff;" styleClass="Boton1">
                      <VBox.margin>
-                        <Insets left="10.0" top="10.0" />
+                        <Insets left="140.0" top="10.0" />
                      </VBox.margin>
                   </JFXDatePicker>
-                  <Label text="Seleccione el color que desea para jugar:" VBox.vgrow="ALWAYS">
+                  <Label styleClass="Label" text="Seleccione el color que desea para jugar:" VBox.vgrow="ALWAYS">
                      <VBox.margin>
-                        <Insets left="10.0" top="50.0" />
+                        <Insets left="90.0" top="50.0" />
                      </VBox.margin>
                      <font>
                         <Font name="Cooper Black" size="15.0" />
@@ -73,12 +76,15 @@
                      <children>
                         <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../recursos/Colores.png" />
+                              <Image url="@../resources/Colores.png" />
                            </image>
-                        </ImageView>
-                        <ComboBox fx:id="CbxColores" onAction="#OnClickCbxColores" prefHeight="41.0" prefWidth="245.0" style="-fx-background-color: transparent; -fx-border-color: #000000; -fx-border-radius: 7px;">
                            <HBox.margin>
-                              <Insets left="5.0" />
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <ComboBox fx:id="CbxColores" onAction="#OnClickCbxColores" prefHeight="41.0" prefWidth="245.0" style="-fx-background-color: transparent; -fx-border-color: #ffffff; -fx-border-radius: 7px;" styleClass="Boton1">
+                           <HBox.margin>
+                              <Insets left="10.0" />
                            </HBox.margin>
                         </ComboBox>
                      </children>
@@ -86,9 +92,9 @@
                         <Insets left="10.0" top="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <JFXButton fx:id="BtnGuardar" buttonType="RAISED" onAction="#OnClickBtnGuardar" prefHeight="45.0" prefWidth="135.0" text="GUARDAR">
+                  <JFXButton fx:id="BtnGuardar" buttonType="RAISED" onAction="#OnClickBtnGuardar" prefHeight="45.0" prefWidth="135.0" styleClass="Boton1" text="GUARDAR">
                      <VBox.margin>
-                        <Insets left="155.0" top="80.0" />
+                        <Insets left="155.0" top="50.0" />
                      </VBox.margin>
                      <font>
                         <Font name="Cooper Black" size="18.0" />

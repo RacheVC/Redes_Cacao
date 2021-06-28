@@ -58,6 +58,6 @@
          </font>
       </Label>
       <Button fx:id="btnRegresar" layoutX="517.0" layoutY="390.0" mnemonicParsing="false" onAction="#OnClickRegresar" prefHeight="80.0" prefWidth="82.0" text="Regresar" visible="false" />
-      <Button layoutX="588.0" layoutY="400.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="74.0" styleClass="Boton1" stylesheets="@../style/Style.css" text="Regresar" />
+      <Button layoutX="576.0" layoutY="421.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="82.0" styleClass="Boton1" stylesheets="@../style/Style.css" text="Regresar" />
    </children>
 </AnchorPane>
