@@ -26,9 +26,11 @@ import java.util.logging.Logger;
  *
  * @author rache
  */
-public class Servidor implements Serializable{
- List<Jugador> ListaJugadores = new ArrayList<Jugador>();
- Partida partida;
+public class Servidor implements Serializable {
+
+    List<Jugador> ListaJugadores = new ArrayList<Jugador>();
+    Partida partida;
+
     public void ConectarServidor() {
         Thread HiloConexion;
         HiloConexion = new Thread(new Runnable() {
@@ -48,22 +50,43 @@ public class Servidor implements Serializable{
                             public void run() {
                                 try {
                                     HashMap<String, Object> consulta = new HashMap<String, Object>();
-                                   
+
                                     serverInputStream = new ObjectInputStream(cliente.getInputStream());
                                     serverOutputStream = new ObjectOutputStream(cliente.getOutputStream());
                                     while (true) {
                                         consulta = (HashMap<String, Object>) serverInputStream.readObject();
                                         if (consulta.get("Accion").equals("Registro")) {
-                                            try{
+                                            try {
                                                 partida = new Partida();
-                                                if(ListaJugadores.size() < 5){
-                                                ListaJugadores.add((Jugador) consulta.get("Jugador"));
-                                                partida.setJugador(ListaJugadores);
-                                                System.out.println("Lista Jugadores:" + ListaJugadores);
-                                                }                                 
-                                            }catch(NullPointerException ex){
+                                                if (ListaJugadores.size() < 5) {
+                                                    ListaJugadores.add((Jugador) consulta.get("Jugador"));
+                                                    partida.setJugador(ListaJugadores);
+                                                    System.out.println("Lista Jugadores:" + ListaJugadores);
+                                                }
+
+                                            } catch (NullPointerException ex) {
                                                 System.out.println(ex);
-                                            }                                      
+                                            }
+                                        } else if (consulta.get("Accion").equals("Turnos")) {
+                                            try {
+                                                for (int i = 0; i < 4; i++) {
+                                                    if (partida.getJugador().indexOf(i) == 0) {
+                                                        partida.setTurno(1);
+                                                    }
+                                                    if (partida.getJugador().indexOf(i) == 1) {
+                                                        partida.setTurno(2);
+                                                    }
+                                                    if (partida.getJugador().indexOf(i) == 2) {
+                                                        partida.setTurno(3);
+                                                    }
+                                                    if (partida.getJugador().indexOf(i) == 3) {
+                                                        partida.setTurno(4);
+                                                    }
+                                                }
+                                            } catch (NullPointerException ex) {
+                                                System.out.println(ex);
+                                            }
+
                                         } else if (consulta.get("Accion").equals("Salir")) {
                                             break;
                                         }

@@ -6,6 +6,8 @@
 package cacao.controller;
 
 import cacao.util.AppContext;
+import cacao.util.Partida;
+import cacao.util.SceneManager;
 import cacao.util.Tablero;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -97,6 +99,8 @@ public class MesaJuegoController extends Controller implements Initializable {
     private ImageView img_losetaRecolectores3;
     @FXML
     private ImageView img_tableroJugador;
+    Partida partidaIniciada;
+    int turno;
 
     /**
      * Initializes the controller class.
@@ -108,12 +112,17 @@ public class MesaJuegoController extends Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         this.cargarMatrizGrafica();
         this.Servidor = (ServCliente) AppContext.getInstance().get("ServidorCliente");
+            //this.AsignarTurnos();    
+           // this.MostrarTurnos();
+        this.partidaIniciada = new Partida();
+        this.turno = 0;
 
         // TODO
     }
 
     @Override
     public void initialize() {
+    
 
     }
 
@@ -150,16 +159,12 @@ public class MesaJuegoController extends Controller implements Initializable {
                 newPane.setId(String.valueOf(i) + String.valueOf(j));
                 newPane.setPrefSize(100, 100);
                 if (i == 6 && j == 6) {
-                    this.cargarImagenPanel(newPane, System.getProperty("user.dir") + "\\src\\cacao\\resources\\ImagenFija1.png");
+                    this.cargarImagenPanel(newPane, System.getProperty("user.dir") + "\\src\\cacao\\resources\\Materiales para el juego Cacao\\Losetas de selva\\Minas\\Mina 2-Valor 1.png");
                 }
                 if (i == 5 && j == 5) {
-                    this.cargarImagenPanel(newPane, System.getProperty("user.dir") + "\\src\\cacao\\resources\\MinaFija.png");
+                    this.cargarImagenPanel(newPane, System.getProperty("user.dir") + "\\src\\cacao\\resources\\Materiales para el juego Cacao\\Losetas de selva\\Plantanciones\\Plantación simple 1.png");
                 }// cargamos la imagen al panel creado
-
                 // agregamos el panel a la matriz grafica
-                
-
-               // this.MatrizGrafica.getStyleClass().add("first-row");
                 this.MatrizGrafica.add(newPane, i, j);
                 this.MatrizLogica[i][j] = 1;
 
@@ -167,8 +172,29 @@ public class MesaJuegoController extends Controller implements Initializable {
         }
     }
     
-    
-   
+
+    public void AsignarTurnos() {
+        HashMap<String, Object> consulta = new HashMap<>();
+        consulta.put("Accion", "Turnos");
+        this.Servidor.EnviarAccion(consulta);
+    }
+
+    public void MostrarTurnos() {
+        if (this.partidaIniciada.getTurno() == 0) {
+            this.lbl_turnoJugador.setText(this.partidaIniciada.getJugador().get(0).getNombre());
+           // this.lbl_jugador1.setText(value);
+        }
+        if (this.partidaIniciada.getTurno() == 1) {
+            this.lbl_turnoJugador.setText(this.partidaIniciada.getJugador().get(1).getNombre());
+        }
+        if (this.partidaIniciada.getTurno() == 2) {
+            this.lbl_turnoJugador.setText(this.partidaIniciada.getJugador().get(2).getNombre());
+        }
+        if (this.partidaIniciada.getTurno() == 3) {
+            this.lbl_turnoJugador.setText(this.partidaIniciada.getJugador().get(3).getNombre());
+        }
+
+    }
 
     @FXML
     private void OnActionBtnSalir(ActionEvent event) {
@@ -176,6 +202,7 @@ public class MesaJuegoController extends Controller implements Initializable {
         consulta.put("Accion", "Salir");
         this.Servidor.EnviarAccion(consulta);
         this.Servidor.CerrarConexion();
+        SceneManager.Instance().changeSceneTo("IpView");
 
     }
 

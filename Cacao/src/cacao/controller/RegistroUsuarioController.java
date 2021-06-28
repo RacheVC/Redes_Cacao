@@ -7,6 +7,7 @@ package cacao.controller;
 
 import cacao.util.AppContext;
 import cacao.util.Jugador;
+import cacao.util.Partida;
 import cacao.util.SceneManager;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
@@ -14,7 +15,9 @@ import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -44,6 +47,7 @@ public class RegistroUsuarioController extends Controller implements Initializab
     String ColorLoseta = "";
     LocalDate date;
     ServCliente Servidor;
+    Partida partidaIniciada;
 
     /**
      * Initializes the controller class.
@@ -51,6 +55,7 @@ public class RegistroUsuarioController extends Controller implements Initializab
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.Servidor = (ServCliente) AppContext.getInstance().get("ServidorCliente");
+        this.partidaIniciada = new Partida();
         // TODO
         //Se le asigna elementos al ComboBox.
         ObservableList listaColores = FXCollections.observableArrayList();
@@ -89,30 +94,37 @@ public class RegistroUsuarioController extends Controller implements Initializab
 
     @FXML
     private void OnClickDpFechaNacimeinto(ActionEvent event) {
- 
+
     }
 
     @FXML
     private void OnClickBtnGuardar(ActionEvent event) {
-        if (this.DpFechaNacimiento.getValue() != null && this.CbxColores.getValue() != null && !" ".equals(this.TxtNombreUsuario.getText())) {         
-          Jugador  jugador = new Jugador(this.TxtNombreUsuario.getText(), this.CbxColores.getValue(), this.DpFechaNacimiento.getValue()); 
-          //AppContext.getInstance().set("Fecha Nacimiento", this.DpFechaNacimiento.getValue());
-          //AppContext.getInstance().set("Color", this.CbxColores.getValue());
-          //AppContext.getInstance().set("Nombre", this.TxtNombreUsuario.getText());
-          HashMap<String, Object> consulta = new HashMap<>();
-          consulta.put("Accion", "Registro");
-          consulta.put("Jugador", jugador);
-          this.Servidor.EnviarAccion(consulta);
-          SceneManager.Instance().changeSceneTo("MesaJuegoView");
-          
-        }if(this.DpFechaNacimiento.getValue() == null){
-              JOptionPane.showMessageDialog(null, "Falta por completar la Fecha de Nacimiento", "Información Faltante", JOptionPane.WARNING_MESSAGE);
-            
-        }if(this.CbxColores.getValue() == null){
+        if (this.DpFechaNacimiento.getValue() != null && this.CbxColores.getValue() != null && !" ".equals(this.TxtNombreUsuario.getText())) {
+            Period edad = this.CalcularEdad();
+            Jugador jugador = new Jugador(this.TxtNombreUsuario.getText(), this.CbxColores.getValue(), this.DpFechaNacimiento.getValue(), edad);
+            HashMap<String, Object> consulta = new HashMap<>();
+            consulta.put("Accion", "Registro");
+            consulta.put("Jugador", jugador);
+            this.Servidor.EnviarAccion(consulta);
+            SceneManager.Instance().changeSceneTo("MesaJuegoView");
+
+        }
+        if (this.DpFechaNacimiento.getValue() == null) {
+            JOptionPane.showMessageDialog(null, "Falta por completar la Fecha de Nacimiento", "Información Faltante", JOptionPane.WARNING_MESSAGE);
+        }
+        if (this.CbxColores.getValue() == null) {
             JOptionPane.showMessageDialog(null, "No Escogio un Color", "Información Faltante", JOptionPane.WARNING_MESSAGE);
-        }if(this.TxtNombreUsuario.equals(" ")){
+        }
+        if (this.TxtNombreUsuario.equals(" ")) {
             JOptionPane.showMessageDialog(null, "Falta por completar el espacio Nombre", "Información Faltante", JOptionPane.WARNING_MESSAGE);
         }
     }
 
+    public Period CalcularEdad() {
+        LocalDate ahora = LocalDate.now();
+        Period periodo = Period.between(this.DpFechaNacimiento.getValue(), ahora);
+        periodo.getYears();
+        System.out.println(periodo);
+        return periodo;
+    }
 }
