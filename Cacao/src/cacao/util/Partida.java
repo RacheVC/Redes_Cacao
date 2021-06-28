@@ -5,7 +5,6 @@
  */
 package cacao.util;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -17,19 +16,21 @@ public class Partida {
     private List<Jugador> jugador;
     private List<Ficha> FichasTrabajador;
     private List<Ficha> FichasSelva;
-    private String turno;
+    private int turno;
     private String ganador;
 
     public Partida() {
     }
 
-    public Partida(List<Jugador> jugador, List<Ficha> FichasTrabajador, List<Ficha> FichasSelva, String turno, String ganador) {
+    public Partida(List<Jugador> jugador, List<Ficha> FichasTrabajador, List<Ficha> FichasSelva, int turno, String ganador) {
         this.jugador = jugador;
         this.FichasTrabajador = FichasTrabajador;
         this.FichasSelva = FichasSelva;
         this.turno = turno;
         this.ganador = ganador;
     }
+
+   
 
     public void setJugador(List<Jugador> jugador) {
         this.jugador = jugador;
@@ -43,9 +44,7 @@ public class Partida {
         this.FichasSelva = FichasSelva;
     }
 
-    public void setTurno(String turno) {
-        this.turno = turno;
-    }
+    
 
     public void setGanador(String ganador) {
         this.ganador = ganador;
@@ -63,9 +62,14 @@ public class Partida {
         return FichasSelva;
     }
 
-    public String getTurno() {
+    public int getTurno() {
         return turno;
     }
+
+    public void setTurno(int turno) {
+        this.turno = turno;
+    }
+
 
     public String getGanador() {
         return ganador;
