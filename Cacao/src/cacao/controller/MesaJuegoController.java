@@ -140,8 +140,6 @@ public class MesaJuegoController extends Controller implements Initializable {
             // agregamos la imagen al panel
             panel.getChildren().add(imageView);
 
-            // remover el ultimo objeto en el panel
-            // panel.getChildren().remove(panel.getChildren().size() - 1);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(MesaJuegoController.class.getName()).log(Level.SEVERE, null, ex);
         }
