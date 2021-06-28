@@ -98,7 +98,7 @@ public class ContenedorController extends Controller implements Initializable {
     private void actionBtnHome(ActionEvent event) {
         if (!actualScene.equals("IpView")) {
             System.out.println("ESCENA CAMBIADA");
-            SceneManager.Instance().changeSceneTo("RegistroUsuarioView");
+            SceneManager.Instance().changeSceneTo("AcercadeView");
         }
     }
 
