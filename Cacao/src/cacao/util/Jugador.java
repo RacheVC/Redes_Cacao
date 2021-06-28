@@ -7,6 +7,7 @@ package cacao.util;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 /**
@@ -23,15 +24,21 @@ public class Jugador implements Serializable {
     private int puntos;
     private int posicionJugador;
     private List<Ficha> FichasJugador;
+    private Period Edad;
 
     public Jugador() {
     }
 
-    public Jugador(String nombre, String color, LocalDate fechaNacimineto) {
+    public Jugador(String nombre, String color, LocalDate fechaNacimineto, Period Edad) {
         this.nombre = nombre;
         this.color = color;
         this.fechaNacimineto = fechaNacimineto;
+        this.Edad = Edad;
     }
+
+   
+
+   
 
     public String getNombre() {
         return nombre;
@@ -96,5 +103,15 @@ public class Jugador implements Serializable {
     public void setLosetasRecolectores(List<Ficha> FichasJugador) {
         this.FichasJugador = FichasJugador;
     }
+
+    public Period getEdad() {
+        return Edad;
+    }
+
+    public void setEdad(Period Edad) {
+        this.Edad = Edad;
+    }
+
+  
 
 }
