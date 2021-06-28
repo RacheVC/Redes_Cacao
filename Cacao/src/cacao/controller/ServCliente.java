@@ -16,7 +16,7 @@ import java.util.HashMap;
  *
  * @author rache
  */
-public class ServCliente implements Serializable{
+public class ServCliente implements Serializable {
 
     public ServCliente() {
     }

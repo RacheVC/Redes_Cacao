@@ -15,10 +15,6 @@ import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
-/**
- *
- * @author dpérez
- */
 public class SceneAnimation {
 
     public enum SlideDirection {

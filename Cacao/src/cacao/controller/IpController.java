@@ -53,7 +53,6 @@ public class IpController extends Controller implements Initializable {
         this.servidorCliente.Conectar(IpServidor);
         AppContext.getInstance().set("ServidorCliente", this.servidorCliente);
         SceneManager.Instance().changeSceneTo("RegistroUsuarioView");
-        
 
     }
 

@@ -36,10 +36,6 @@ public class Jugador implements Serializable {
         this.Edad = Edad;
     }
 
-   
-
-   
-
     public String getNombre() {
         return nombre;
     }
@@ -111,7 +107,5 @@ public class Jugador implements Serializable {
     public void setEdad(Period Edad) {
         this.Edad = Edad;
     }
-
-  
 
 }

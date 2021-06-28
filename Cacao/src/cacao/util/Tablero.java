@@ -11,10 +11,10 @@ package cacao.util;
  */
 public class Tablero {
 
-    private int [][] tablero;
+    private int[][] tablero;
 
     public Tablero(int[][] tablero) {
-       
+
     }
 
     public int[][] getTablero() {
@@ -25,5 +25,4 @@ public class Tablero {
         this.tablero = tablero;
     }
 
-    
 }

@@ -112,8 +112,8 @@ public class MesaJuegoController extends Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         this.cargarMatrizGrafica();
         this.Servidor = (ServCliente) AppContext.getInstance().get("ServidorCliente");
-            //this.AsignarTurnos();    
-           // this.MostrarTurnos();
+        //this.AsignarTurnos();    
+        // this.MostrarTurnos();
         this.partidaIniciada = new Partida();
         this.turno = 0;
 
@@ -122,7 +122,6 @@ public class MesaJuegoController extends Controller implements Initializable {
 
     @Override
     public void initialize() {
-    
 
     }
 
@@ -171,7 +170,6 @@ public class MesaJuegoController extends Controller implements Initializable {
             }
         }
     }
-    
 
     public void AsignarTurnos() {
         HashMap<String, Object> consulta = new HashMap<>();
@@ -182,7 +180,7 @@ public class MesaJuegoController extends Controller implements Initializable {
     public void MostrarTurnos() {
         if (this.partidaIniciada.getTurno() == 0) {
             this.lbl_turnoJugador.setText(this.partidaIniciada.getJugador().get(0).getNombre());
-           // this.lbl_jugador1.setText(value);
+            // this.lbl_jugador1.setText(value);
         }
         if (this.partidaIniciada.getTurno() == 1) {
             this.lbl_turnoJugador.setText(this.partidaIniciada.getJugador().get(1).getNombre());

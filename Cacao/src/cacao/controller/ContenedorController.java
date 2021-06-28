@@ -18,11 +18,6 @@ import javafx.scene.layout.StackPane;
 import cacao.util.SceneAnimation;
 import cacao.util.SceneManager;
 
-/**
- * FXML Controller class
- *
- * @author jorgeElFurioso
- */
 public class ContenedorController extends Controller implements Initializable {
 
     @FXML
@@ -35,8 +30,9 @@ public class ContenedorController extends Controller implements Initializable {
     private BorderPane root;
 
     private String actualScene;
-    
+
     ServCliente Servidor;
+
     /**
      * Initializes the controller class.
      */
@@ -45,7 +41,6 @@ public class ContenedorController extends Controller implements Initializable {
         this.btnHome.setVisible(false);
         this.Servidor = (ServCliente) AppContext.getInstance().get("ServidorCliente");
 
-        
     }
 
     public ToolBar getTopBar() {
@@ -58,7 +53,7 @@ public class ContenedorController extends Controller implements Initializable {
 
     @Override
     public void initialize() {
-        
+
     }
 
     public BorderPane getRootNode() {
@@ -93,7 +88,7 @@ public class ContenedorController extends Controller implements Initializable {
             SceneAnimation.fadeIn(btnHome, 1.2).play();
         }
     }
-   
+
     @FXML
     private void actionBtnHome(ActionEvent event) {
         if (!actualScene.equals("IpView")) {
@@ -101,7 +96,5 @@ public class ContenedorController extends Controller implements Initializable {
             SceneManager.Instance().changeSceneTo("AcercadeView");
         }
     }
-
-
 
 }

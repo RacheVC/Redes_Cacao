@@ -30,8 +30,6 @@ public class Partida {
         this.ganador = ganador;
     }
 
-   
-
     public void setJugador(List<Jugador> jugador) {
         this.jugador = jugador;
     }
@@ -43,8 +41,6 @@ public class Partida {
     public void setFichaS(List<Ficha> FichasSelva) {
         this.FichasSelva = FichasSelva;
     }
-
-    
 
     public void setGanador(String ganador) {
         this.ganador = ganador;
@@ -69,7 +65,6 @@ public class Partida {
     public void setTurno(int turno) {
         this.turno = turno;
     }
-
 
     public String getGanador() {
         return ganador;
