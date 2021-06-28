@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -38,6 +39,64 @@ public class MesaJuegoController extends Controller implements Initializable {
     @FXML
     private Button BtnSalir;
     ServCliente Servidor;
+    @FXML
+    private Label lbl_turnoJugador;
+    @FXML
+    private Label lbl_jugador1;
+    @FXML
+    private Label lbl_cacaos1;
+    @FXML
+    private Label lbl_monedas1;
+    @FXML
+    private Label lbl_soles1;
+    @FXML
+    private Label lbl_aguas1;
+    @FXML
+    private Label lbl_jugador2;
+    @FXML
+    private Label lbl_cacaos2;
+    @FXML
+    private Label lbl_monedas2;
+    @FXML
+    private Label lbl_soles2;
+    @FXML
+    private Label lbl_aguas2;
+    @FXML
+    private Label lbl_jugador3;
+    @FXML
+    private Label lbl_cacaos3;
+    @FXML
+    private Label lbl_monedas3;
+    @FXML
+    private Label lbl_soles3;
+    @FXML
+    private Label lbl_aguas3;
+    @FXML
+    private Label lbl_jugador4;
+    @FXML
+    private Label lbl_cacaos4;
+    @FXML
+    private Label lbl_monedas4;
+    @FXML
+    private Label lbl_soles4;
+    @FXML
+    private Label lbl_aguas4;
+    @FXML
+    private ImageView img_losetasSelvaReverso;
+    @FXML
+    private ImageView img_losetaSelva1;
+    @FXML
+    private ImageView img_losetaSelva2;
+    @FXML
+    private ImageView img_losetasRecolectoresReverso;
+    @FXML
+    private ImageView img_losetaRecolectores1;
+    @FXML
+    private ImageView img_losetaRecolectores2;
+    @FXML
+    private ImageView img_losetaRecolectores3;
+    @FXML
+    private ImageView img_tableroJugador;
 
     /**
      * Initializes the controller class.
